@@ -4,7 +4,7 @@ import pandas as pd
 import datetime as dt
 from typing import List
 
-def getCSV(filename: str) -> pd.DataFrame:
+def get_paraCSV(filename: str) -> pd.DataFrame:
     """This function reads fgm parameters from csv file"""
     try:
         df = pd.read_csv(filename)
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     start_time_str = "2021-12-16"
     end_time_str = "2022-06-26"
     filenames = getFileList(foldername, mission, start_time_str, end_time_str)
-    dfs = [getCSV(os.path.join(foldername, filename)) for filename in filenames]
+    dfs = [get_paraCSV(os.path.join(foldername, filename)) for filename in filenames]
     beta_df = pd.concat(dfs, ignore_index=True)
 
     plot_beta_Gain(beta_df)
